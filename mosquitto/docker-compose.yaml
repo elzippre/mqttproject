@@ -8,8 +8,8 @@ services:
             - 8883:8883
             - 9001:9001
         volumes:
-            - ./mosquitto/config:/srv/mosquitto/config
-            - ./mosquitto/data:/srv/mosquitto/data
+            - ./config:/srv/mosquitto/config
+            - ./data:/srv/mosquitto/data
         networks:
             - mosquitto
 networks:
