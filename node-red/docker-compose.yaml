@@ -23,3 +23,6 @@ networks:
   node-red-net:
     name: "node-red"
     external: true
+  mosquitto:
+        name: mosquitto
+        driver: bridge
