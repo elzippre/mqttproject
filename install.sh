@@ -15,6 +15,7 @@ docker-compose up -d
 #node-red network
 cd $pfad/node-red
 mkdir ./data
+chmod -r 760 ./data
 docker network create node-red
 # Node-Red install
 docker-compose up -d
