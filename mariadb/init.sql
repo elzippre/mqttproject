@@ -1,3 +1,5 @@
+use test
+
 CREATE TABLE messages (
     m_id INT NOT NULL AUTO_INCREMENT,
     m_date DATETIME,
