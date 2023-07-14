@@ -9,13 +9,12 @@ docker-compose up -d
 
 # MQTT Sensor install
 cd $pfad/mqtt-sensor
-docker build . -t sensor
+docker-compose build
 docker-compose up -d
 
 #node-red network
 cd $pfad/node-red
-mkdir ./data
-chmod -R 760 ./data
+#mkdir ./data
 docker network create node-red
 # Node-Red install
 docker-compose up -d

@@ -1,0 +1,218 @@
+[
+    {
+        "id": "2b610cba3f176051",
+        "type": "tab",
+        "label": "MQTT Logging to mariadb",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "868a1293b474eea2",
+        "type": "MySQL-Server-Connector",
+        "name": "test",
+        "host": "mariadb",
+        "port": "3306",
+        "user": "test",
+        "password": "test",
+        "tls": false,
+        "database": "test"
+    },
+    {
+        "id": "4207f3762d488795",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "mosquitto",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "11bb52c1e6a532f9",
+        "type": "MySQL-Connector",
+        "z": "2b610cba3f176051",
+        "server": "868a1293b474eea2",
+        "name": "",
+        "x": 570,
+        "y": 40,
+        "wires": [
+            [
+                "f15ef3ea0ea1913c"
+            ]
+        ]
+    },
+    {
+        "id": "c505693ca6b312a9",
+        "type": "mqtt in",
+        "z": "2b610cba3f176051",
+        "name": "",
+        "topic": "#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "4207f3762d488795",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 70,
+        "y": 40,
+        "wires": [
+            [
+                "a49f8c9cab1ee6ea"
+            ]
+        ]
+    },
+    {
+        "id": "f15ef3ea0ea1913c",
+        "type": "debug",
+        "z": "2b610cba3f176051",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "a49f8c9cab1ee6ea",
+        "type": "change",
+        "z": "2b610cba3f176051",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.sender",
+                "pt": "msg",
+                "to": "topic",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.message",
+                "pt": "msg",
+                "to": "payload.light",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "INSERT INTO messages (`m_date`, `m_sender`, `m_message`) VALUES (now(), :sender, :message);",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 260,
+        "y": 40,
+        "wires": [
+            [
+                "f15ef3ea0ea1913c",
+                "11bb52c1e6a532f9"
+            ]
+        ]
+    },
+    {
+        "id": "11e60d06072be2ea",
+        "type": "mqtt out",
+        "z": "2b610cba3f176051",
+        "name": "",
+        "topic": "sensors/sensor-3542/control",
+        "qos": "1",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "4207f3762d488795",
+        "x": 660,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "c42c502159eefeca",
+        "type": "inject",
+        "z": "2b610cba3f176051",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "ON",
+        "payloadType": "str",
+        "x": 230,
+        "y": 140,
+        "wires": [
+            [
+                "11e60d06072be2ea"
+            ]
+        ]
+    },
+    {
+        "id": "eb3d72e17361e2c2",
+        "type": "inject",
+        "z": "2b610cba3f176051",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "OFF",
+        "payloadType": "str",
+        "x": 230,
+        "y": 200,
+        "wires": [
+            [
+                "11e60d06072be2ea"
+            ]
+        ]
+    }
+]
