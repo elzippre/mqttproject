@@ -3,7 +3,8 @@ version: '3.8'
 services:
     mqttsensor:
         image: sensor
-          
+        container_name: mqtt-sensor
+        hostname: sensor
         networks:
             - mosquitto
 networks:

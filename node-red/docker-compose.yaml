@@ -12,16 +12,16 @@ services:
     environment:
       - TZ=Europe/Amsterdam
     ports:
-      - "1880:1880"
+      - 1880:1880
     networks:
       - node-red-net
       - mosquitto
     volumes:
-      - /srv/node-red/data:/data
+      - ./data:/data
 
 networks:
   node-red-net:
-    name: "node-red"
+    name: node-red
     external: true
   mosquitto:
         name: mosquitto
