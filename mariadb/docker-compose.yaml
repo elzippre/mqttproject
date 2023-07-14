@@ -1,0 +1,40 @@
+version: '3.7'
+
+services:
+  db:
+    build:
+      context: .
+      dockerfile: dockerfile
+
+    container_name: mariadb
+    hostname: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: example
+      MARIADB_DATABASE: ${DB_NAME} #Datenbank Name anpassen
+      MARIADB_USER: ${DB_NAME}
+      MARIADB_PASSWORD: ${DB_NAME}
+
+    volumes:
+      - ./data:/var/lib/mysql
+    ports:
+      - 3808:3808
+    networks:
+      - node-red-net
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - node-red-net
+      - mosquitto
+
+networks:
+  node-red-net:
+    name: node-red
+    external: true
+  mosquitto:
+        name: mosquitto
+        driver: bridge
