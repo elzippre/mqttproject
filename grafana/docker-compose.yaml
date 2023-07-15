@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  grafana:
+    container_name: grafana
+    hostname: grafana
+    image: grafana/grafana-oss
+    restart: unless-stopped
+    environment:
+      - GF_SERVER_ROOT_URL=http://grafana.local/
+      - GF_INSTALL_PLUGINS="grafana-mqtt-datasource"
+    ports:
+     - 3000:3000
+    volumes:
+     - ./data:/var/lib/grafana
+    networks:
+       - node-red-net
+       - mosquitto
+
+networks:
+  node-red-net:
+    name: node-red
+    external: true
+  mosquitto:
+        name: mosquitto
+        driver: bridge
+

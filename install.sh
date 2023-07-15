@@ -29,3 +29,8 @@ cd $pfad/mariadb
 export DB_NAME=test
 docker-compose build
 docker-compose up -d
+
+#Grafana install
+cd $pfad/grafana
+mkdir -p ./data/
+docker-compose up -d
