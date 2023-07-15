@@ -3,6 +3,8 @@ services:
   grafana:
     container_name: grafana
     hostname: grafana
+    privileged: true
+    user: root
     image: grafana/grafana-oss
     restart: unless-stopped
     environment:
