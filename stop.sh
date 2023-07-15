@@ -13,3 +13,6 @@ cd ..
 cd ./mongo-db
 docker-compose down
 cd ..
+cd ./grafana
+docker-compose down
+cd ..
