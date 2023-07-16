@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  influxdb:
+    image: influxdb
+    restart: unless-stopped
+    volumes:
+      - "./data:/var/lib/influxdb"
+    
+    ports:
+      - 8086:8086
+    networks:
+      - node-red-net
+      - mosquitto
+
+networks:
+  node-red-net:
+    name: node-red
+    external: true
+  mosquitto:
+        name: mosquitto
+        driver: bridge
+

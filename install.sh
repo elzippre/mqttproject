@@ -25,12 +25,22 @@ docker-compose up -d
 #docker-compose up -d
 
 #MariaDB install
-cd $pfad/mariadb
-export DB_NAME=test
-docker-compose build
-docker-compose up -d
+#cd $pfad/mariadb
+#export DB_NAME=test
+#docker-compose build
+#docker-compose up -d
 
 #Grafana install
-cd $pfad/grafana
+#cd $pfad/grafana
+#mkdir -p ./data/
+#docker-compose up -d
+
+#InfluxDB nstall
+cd $pfad/influxdb
 mkdir -p ./data/
+docker-compose up -d
+
+#Home assistant install
+cd $pfad/homeassistant
+mkdir -p ./config/
 docker-compose up -d

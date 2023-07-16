@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  homeassistant:
+    hostname: homeassistant
+    container_name: homeassistant
+    image: ghcr.io/home-assistant/home-assistant:stable
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Vienna
+    privileged: true
+    ports:
+      - 8086:8086
+    volumes:
+      - ./config:/config
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - node-red-net
+      - mosquitto
+
+networks:
+  node-red-net:
+    name: node-red
+    external: true
+  mosquitto:
+        name: mosquitto
+        driver: bridge
