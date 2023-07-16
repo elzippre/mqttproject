@@ -16,3 +16,9 @@ cd ..
 cd ./grafana
 docker-compose down
 cd ..
+cd ./influxdb
+docker-compose down
+cd ..
+cd ./homeassistant
+docker-compose down
+cd ..
