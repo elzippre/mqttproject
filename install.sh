@@ -36,14 +36,14 @@ docker-compose up -d
 #docker-compose up -d
 
 #InfluxDB nstall
-cd $pfad/influxdb
-mkdir -p ./data/
-docker-compose up -d
+#cd $pfad/influxdb
+#mkdir -p ./data/
+#docker-compose up -d
 
 #Home assistant install
-cd $pfad/homeassistant
-mkdir -p ./config/
-docker-compose up -d
+#cd $pfad/homeassistant
+#mkdir -p ./config/
+#docker-compose up -d
 
 #iobroker install
 cd $pfad/iobroker
