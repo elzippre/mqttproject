@@ -1,0 +1,20 @@
+services:
+  iobroker:
+    container_name: iobroker
+    image: buanet/iobroker
+    hostname: iobroker
+    restart: always
+    volumes:
+      - ./config:/opt/iobroker
+    ports:
+      - "8081:8081"
+    networks:
+      - mosquitto
+      - node-red-net
+networks:
+   mosquitto:
+      name: mosquitto
+      driver: bridge
+   node-red-net:
+     name: node-red
+     external: true

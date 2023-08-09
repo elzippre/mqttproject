@@ -44,3 +44,8 @@ docker-compose up -d
 cd $pfad/homeassistant
 mkdir -p ./config/
 docker-compose up -d
+
+#iobroker install
+cd $pfad/iobroker
+mkdir -p ./config/
+docker-compose up -d
