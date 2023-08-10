@@ -8,13 +8,14 @@ services:
       - ./config:/opt/iobroker
     ports:
       - "8081:8081"
+      - "8082:8082"
     networks:
       - mosquitto
-      - node-red-net
+      - iobroker-net
 networks:
    mosquitto:
       name: mosquitto
       driver: bridge
-   node-red-net:
-     name: node-red
+   iobroker-net:
+     name: iobroker
      external: true

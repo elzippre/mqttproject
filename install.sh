@@ -13,9 +13,9 @@ docker-compose build
 docker-compose up -d
 
 #node-red network
-cd $pfad/node-red
+#cd $pfad/node-red
 #mkdir ./data
-docker network create node-red
+#docker network create node-red
 # Node-Red install
 docker-compose up -d
 
@@ -48,4 +48,5 @@ docker-compose up -d
 #iobroker install
 cd $pfad/iobroker
 mkdir -p ./config/
+docker network create iobroker
 docker-compose up -d

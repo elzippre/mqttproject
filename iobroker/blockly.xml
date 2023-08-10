@@ -1,0 +1,33 @@
+<block xmlns="https://developers.google.com/blockly/xml" type="control" id="^rXg.Y=M`*_zITZgT%D+" x="134" y="191">
+  <mutation xmlns="http://www.w3.org/1999/xhtml" delay_input="false"></mutation>
+  <field name="OID">loxone.0.1b791342-00a5-97e2-ffff1b071bc9b307.value</field>
+  <field name="WITH_DELAY">FALSE</field>
+  <value name="VALUE">
+    <block type="get_attr" id="UG{SY$LPFe~ovCU:BfCD">
+      <value name="PATH">
+        <shadow type="text" id="A.h_PPM8T_fz=W*pjm}p">
+          <field name="TEXT">Temperature</field>
+        </shadow>
+      </value>
+      <value name="OBJECT">
+        <block type="get_attr" id="=64%(EPUVOZxadB|J!_Z">
+          <value name="PATH">
+            <shadow type="text" id="|S}=aZNo*4$)x[J@|5u~">
+              <field name="TEXT">AM2301</field>
+            </shadow>
+          </value>
+          <value name="OBJECT">
+            <block type="convert_json2object" id="B^.%.iL7HILrzH*OX//t">
+              <value name="VALUE">
+                <block type="get_value" id="f7CS/wz|51j.v,]m+X@B">
+                  <field name="ATTR">val</field>
+                  <field name="OID">mqtt.0.tele.sonoff.SENSOR</field>
+                </block>
+              </value>
+            </block>
+          </value>
+        </block>
+      </value>
+    </block>
+  </value>
+</block>
